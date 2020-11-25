@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        用户登录
+    </title>
+    <meta charset="utf-8">
+    <style>
+        body{
+            background: #befffa;
+        }
+        p{
+            text-align: center;
+
+        }
+        input{
+            font-family: 宋体;
+            font-size: large;
+        }
+    </style>
+    <script>
+        function checkUser(){
+            var username = document.getElementById("username").value;//文本框中的值，var是各种变量类型的集合
+            if(username == ""){
+                document.getElementById("tishiUsername").innerHTML ="用户名不能为空";
+                alert("用户名不能为空");
+                return false;//必须要写return跳出
+            }else{
+                document.getElementById("tishiUsername").innerHTML ="";
+            }
+
+            var pwd = document.getElementById("pwd").value;
+            if(pwd == ""){
+                document.getElementById("tishiPwd").innerHTML ="密码不能为空";
+                alert("密码不能为空");
+                return false;
+            }
+
+            //window.location.href="/dologin?"+ "username=" + username + "&" + "pwd=" + pwd;//全部通过则定位至链接
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+
+<!--
+    用户名，密码，重复密码不可为空
+    密码重复密码相同
+    密码为六位
+    邮箱有@
+    条件全满足则跳转
+-->
+<form action="/doLogin" method="post" align="center" onsubmit="return checkUser()">
+
+    <p>
+        <br/><br/><br/><br/><br/>
+        账号：<input name="username" id="username" required>
+        <span></span>
+        <span id="tishiUsername"></span>
+    </p>
+    <p>
+        密码：<input type="password" name="password" id="pwd" required>
+        <span></span>
+        <span id="tishiPwd"></span>
+    </p>
+    <p><input type="submit" value="登录"></p>
+
+</form>
+
+
+
+</body>
+
+</html>

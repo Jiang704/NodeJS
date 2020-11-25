@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        用户注册
+    </title>
+    <meta charset="utf-8">
+    <style>
+        body{
+            /*background: #befffa;*/
+            background: no-repeat;
+            background-color: #08AEEA;
+            background-image: linear-gradient(0deg, #08AEEA 0%, #2af5d9 100%);
+
+
+
+
+
+            text-align: center;
+        }
+        #body{
+            border:2px solid cornflowerblue;
+            border-radius:25px;
+            width: 400px;
+            /*background: #5b9f5136;*/
+            background-color: #D9AFD9;
+            background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+
+            margin:0 auto
+        }
+        p{
+            text-align: center;
+
+        }
+        input{
+            font-family: 宋体;
+            font-size: large;
+        }
+        div h2{
+            font-family: 仿宋;
+            font-size: large;
+            text-align: center;
+
+        }
+    </style>
+    <script>
+        function checkUser(){
+            var username = document.getElementById("username").value;//文本框中的值，var是各种变量类型的集合
+            if(username == ""){
+                document.getElementById("tishiUsername").innerHTML ="用户名不能为空";
+                alert("用户名不能为空");
+                return false;//必须要写return跳出
+            }else{
+                document.getElementById("tishiUsername").innerHTML ="";
+            }
+
+            var pwd = document.getElementById("pwd").value;
+            if(pwd == ""){
+                document.getElementById("tishiPwd").innerHTML ="密码不能为空";
+                alert("密码不能为空");
+                return false;
+            }
+
+            var repwd = document.getElementById("repwd").value;
+            if(pwd != repwd){
+                document.getElementById("tishiRepwd").innerHTML ="两次密码不一样";
+                alert("两次密码不一样");
+                return false;
+            }
+
+            var email = document.getElementById("email").value;
+            var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])/;//邮箱格式包括_-两个符号
+            if(!reg.test(email)){
+                document.getElementById("tishiEmail").innerHTML ="邮箱格式错误";
+                alert("邮箱格式错误");
+                return false;
+            }
+
+            //window.location.href="/dologin?"+ "username=" + username + "&" + "pwd=" + pwd;//全部通过则定位至链接
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+
+<!--
+    用户名，密码，重复密码不可为空
+    密码重复密码相同
+    密码为六位
+    邮箱有@
+    条件全满足则跳转
+-->
+<br/><br/><br/><br/>
+
+<div id="body">
+<form action="/doAdd" method="post" align="center" onsubmit="return checkUser()">
+    <h2>账号注册</h2>
+    <p>
+        账号：<input name="username" id="username" required>
+        <span></span>
+        <span id="tishiUsername"></span>
+    </p>
+    <p>
+        密码：<input type="password" name="password" id="pwd" required>
+        <span></span>
+        <span id="tishiPwd"></span>
+    </p>
+    <p>
+        确认：<input type="password" name="repwd" id="repwd" required>
+        <span></span>
+        <span id="tishiRepwd"></span>
+    </p>
+
+    <p>
+        工号：<input name="workID" id="workID" required>
+        <span></span>
+        <span id="tishiworkID"></span>
+    </p>
+
+    <p>
+        电话：<input name="phone" id="phone" required>
+        <span></span>
+        <span id="tishiphone"></span>
+    </p>
+
+    <p>
+        邮箱：<input name="email" id="email">
+        <span></span>
+        <span id="tishiEmail"></span>
+    </p>
+
+    <p>
+        职位：<input name="profession" id="profession" required>
+        <span></span>
+        <span id="tishiprofession"></span>
+    </p>
+    <p><input type="submit" value="注册"></p>
+
+</form>
+</div>
